@@ -13,7 +13,7 @@ type person struct {
 }
 
 func main() {
-	person := person{
+	foo := person{
 		lastName:  "Foo",
 		firstName: "Bar",
 		contact: contactInfo{
@@ -22,5 +22,14 @@ func main() {
 		},
 	}
 
-	fmt.Printf("%+v", person)
+	foo.updateLastName("Molly")
+	foo.print()
+}
+
+func (p *person) updateLastName(ln string) {
+	(*p).lastName = ln
+}
+
+func (p *person) print() {
+	fmt.Printf("%+v", *p)
 }
